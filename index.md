@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages我看不懂
+## Welcome to GitHub Pages 這看起來不像HTML
 
 You can use the [editor on GitHub](https://github.com/lilianakaki/lilianakaki.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files. can i try write something here?
 
@@ -11,7 +11,7 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 ```markdown
 Syntax highlighted code block
 
-# Header 1
+# Header 1  看起來有點奇怪
 ## Header 2
 ### Header 3
 
