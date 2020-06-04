@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html onload="document.write('123');">
+	<head><title>初代擬答產生器</title></head>
+	<body>
+		<header>
+			<h1>刑分擬答產生器
+			</h1>
+			<pre>
+機器人只具有輔助功能  不要真的以為考試這樣答就可以了喔
+			</pre>
+			<h2>參考法條</h2>
+			<ul>
+				<li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=C0000001" targat="_blank">刑法</a></li>
+				<li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=C0010001" targat="_blank">刑事訴訟法</a></li>
+			</ul>
+			<nav>
+			</nav>
+		</header>
+		<article>
+			<section></section>
+			<form id='hard'>
+			<br>
+			<label for="factor" id="actor"> 行為人：</label><input type="text" name="actor" id="a">
+			<label for="fvictim" id="victim"> 被害人：</lable><input type="text" name="victim" id="b">
+			<label for="fact" id="act"> 行為：</label><input type="text" name="act" id="c">
+			<br>
+			<p>
+			<label for="act" id="law"> 罪名(ex刑法271條1項殺人罪)：</label><input type="text" name="law" id="d">
+			</p>
+			既未遂：<input type="radio" name="completion" id="c1" value="done"><label for="done" id="label-done">既遂</label>
+			<input type="radio" name="completion" id="c2" value="yet"><label for="yet" id="label-yet">未遂</label>
+			<p>
+			故意過失：<input type="radio" name="subject" id="s1" value="done"><label for="mean" id="label-mean">故意</label>
+			<input type="radio" name="subject" id="s2" value="yet"><label for="negligence" id="label-negligence">過失</label>
+			
+			</P>
+			<button type="button" id="subButton" value="answer">請回答</button>
+			</form>
+			<p>參考答案</p>
+			<div>
+			<p id='result'></p></div>
+			</div>
+			<br>
+			<br>
+			
+			
+			<script>
+			//<script src="jquery-3.5.1.min">
+			
+			function getUserName() {
+				var actor = document.getElementById('a').value;
+				var victim = document.getElementById('b').value;
+				var act = document.getElementById('c').value;
+				var law = document.getElementById('d').value;
+				var result = document.getElementById('result');
+			
+				result.innerHTML = actor + act +'的行為，構成' + law + '。';
+				result.innerHTML+='<br>';
+				result.innerHTML+='(一)構成要件階層：';
+				result.innerHTML+='<br>';	 
+				result.innerHTML+='題示'+actor + act +'的行為，已進入犯罪構成要件著手階段，且已經發生該當構成要件之結果。'+actor+'對於該結果有認識及意欲，其行為該當'+law+'構成要件';
+				
+				//alert(nameField);
+			}
+			
+
+
+
+			var subButton = document.getElementById('subButton');
+			subButton.addEventListener('click', getUserName, false); 
+			//這行到底是要幹嘛啦！
+			//document.getElementById('result').textContent = actor + act +'的行為，構成' + law + '。';
+			//document.getElementById('result').textContent+='777';
+			//document.write( a+ c+'的行為，構成'+ d)   //試試看註解
+			
+			
+			
+			</script>
+		</article>
+		<aside></aside>
+		<footer></footer>
+	
+	</body>
+</html>
