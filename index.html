@@ -28,26 +28,38 @@
 			<br>
 			<p>
 			<label for="act" id="law"> 罪名(ex刑法271條1項殺人罪)：</label><input type="text" name="law" id="e">
+			
 			</p>
-			
-			既未遂：
-			<input type="radio" name="completion" id="c1" value="done"><label for="done" id="label-done">既遂</label>
-			<s><input type="radio" name="completion" id="c2" value="yet"><label for="yet" id="label-yet">未遂</label></s>
-			>>>暫不支援未遂題型
-			
+						
+			<div id=Mens>
 			<p>
 			故意過失：
-			<input type="radio" name="subject" id="s1" value="done"><label for="mean" id="label-mean">故意</label>
-			<s><input type="radio" name="subject" id="s2" value="yet"><label for="negligence" id="label-negligence">過失</label></s>
-			>>>暫不支援過失題型
+			<input type="radio" name="subject" id="s1" value="subject"><label for="mean" id="label-mean">故意</label>
+			<input type="radio" name="subject" id="s2" value="subject"><label for="negligence" id="label-negligence">過失</label>
+			<br>
+			過失犯須填：<label for="res" id="rule"> 客觀注意義務(ex:交通規則)：</label><input type="text" name="resultss" id="f">
 			</P>
+			</div>
+						
+			<div id=Actus>
+			既未遂：
+			<input type="radio" name="completion" id="c1" value="done"><label for="done" id="label-done">既遂</label>
+			<input type="radio" name="completion" id="c2" value="yet"><label for="yet" id="label-yet">未遂</label>
+			<br>
+			未遂犯須填：
+			<label for="res" id="mind"> 行為決意：</label><input type="text" name="resultss" id="g">
+			<label for="res" id="mresults"> 預期結果：</label><input type="text" name="resultss" id="h">
+			</div>
 			
+			
+			<div id=structure>
 			解題架構(需要論述的部分)：
 			<input type="checkbox" name="fra" id="f1" value="TB">構成要件
 			<input type="checkbox" name="fra" id="f2" value="S">違法性
 			<input type="checkbox" name="fra" id="f3" value="R">有責性
 			<br>
-			<small>建議僅勾選「構成要件」，因為其他部分的論述擬答產生器暫不支援。</small>
+			</div>
+			
 			<br>
 			<br>
 			
@@ -55,42 +67,82 @@
 			</form>
 			<p>參考答案</p>
 			<div>
-			<p id='result'></p></div>
+			<p id='text'></p></div>
 			</div>
 			<br>
 			<br>
 			
 			
 			<script>
-			//<script src="jquery-3.5.1.min">
+
+function generate() {			
+	var text = document.getElementById('text');
+	var actor = document.getElementById('a').value;
+	var victim = document.getElementById('b').value;
+	var act = document.getElementById('c').value;
+	var results = document.getElementById('d').value;
+	var law = document.getElementById('e').value;
+	var rule = document.getElementById('f').value;
+	var mind = document.getElementById('g').value;
+	var mresults = document.getElementById('h').value;
+	var head = actor + act +'的行為導致'+results+'，構成' + law + '。';
+	
+	/*故意既遂*/var TB_s1c1='(一)構成要件：'+actor + act +'的行為，進入犯罪構成要件著手階段，而該行為乃造成'+results+'結果所不可想像其不存在的條件。'+actor+'對於行為及結果有認識與意欲，其行為該當'+law+'構成要件。';
+	/*故意未遂*/var TB_s1c2='(一)構成要件：'+actor +'基於'+mind+'之行為決意而'+ act +'，此行為與構成要件行為間已無其他中間步驟，且使法益陷於直接危險，已經進入著手階段，但由於未發生'+mresults+'之結果，其行為應評價為未遂。';
+	/*過失既遂*/var TB_s2c1='(一)構成要件：'+actor+ act +'的行為已違反遵守'+rule+'之一般注意義務，而此行為與'+results+'之結果間存在因果關係，又違反規則者應對此結果之發生有預見之可能，'+actor+'之行為應評價為過失。';
+	
+	var R='(二)違法性：無阻卻違法事由。'
+	var S_s1c1='(三)有責性：無阻卻罪責事由。'
+	var S_s1c2='(三)有責性：未遂有有「障礙未遂」、「不能未遂」、「中止未遂」三種，不同類型有不同寫法，需要細緻的涵攝，有點困難，擬答產生器暫不支援。';
+	var S_s2c1='(三)有責性：'+actor + act +'的行為違反'+rule+'具主觀注意義務違反，且對於結果之發生具備主觀預見可能。本件無阻卻罪責事由。';
+
+
+	if (document.getElementById('s1').checked) {
+		if (document.getElementById('c1').checked) {
+		TB = TB_s1c1;
+		R = R ;
+		S = S_s1c1 ;
+		}
+		if (document.getElementById('c2').checked) {
+		TB = TB_s1c2;
+		R = R ;
+		S = S_s1c2 ;
+		}
+		
+	}
+	if (document.getElementById('s2').checked) {
+	  if (document.getElementById('c1').checked) {
+		TB = TB_s2c1;
+		R = R ;
+		S = S_s2c1 ;
+		}
+		if (document.getElementById('c2').checked) {
+		TB = '沒有這種情況';
+		R = ' ';
+		S = ' ';
+		}
+	}
+
+	text.innerHTML = head;
+	text.innerHTML+='<br>';
+	if (document.getElementById('f1').checked) {
+	text.innerHTML+= TB;
+	}
+	text.innerHTML+='<br>';
+	if (document.getElementById('f2').checked) {
+	text.innerHTML+= R;
+	}
+	text.innerHTML+='<br>';
+	if (document.getElementById('f3').checked) {
+	text.innerHTML+= S;
+	}
 			
-			function getUserName() {
-				var actor = document.getElementById('a').value;
-				var victim = document.getElementById('b').value;
-				var act = document.getElementById('c').value;
-				var results = document.getElementById('d').value;
-				var law = document.getElementById('e').value;
-				var result = document.getElementById('result');
-			
-				result.innerHTML = actor + act +'的行為，構成' + law + '。';
-				result.innerHTML+='<br>';
-				result.innerHTML+='(一)構成要件：';
-				result.innerHTML+='<br>';	 
-				result.innerHTML+=actor + act +'的行為，進入犯罪構成要件著手階段，而該行為乃造成'+results+'結果所不可想像其不存在的條件。'+actor+'對於行為及結果有認識與意欲，其行為該當'+law+'構成要件。';
-				result.innerHTML+='<br>';
-				result.innerHTML+='(二)違法性：';
-				result.innerHTML+='<br>';
-				result.innerHTML+='無阻卻違法事由。';
-				result.innerHTML+='<br>';
-				result.innerHTML+='(三)有責性：';
-				result.innerHTML+='<br>';
-				result.innerHTML+='無阻卻罪責事由。';
-				//alert(nameField);
-			}
+}			
+
 			
 
 			var subButton = document.getElementById('subButton');
-			subButton.addEventListener('click', getUserName, false); 
+			subButton.addEventListener('click', generate, true); 
 			
 			
 			</script>
