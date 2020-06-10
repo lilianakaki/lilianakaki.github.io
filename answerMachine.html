@@ -24,17 +24,33 @@
 			<label for="factor" id="actor"> 行為人：</label><input type="text" name="actor" id="a">
 			<label for="fvictim" id="victim"> 被害人：</lable><input type="text" name="victim" id="b">
 			<label for="fact" id="act"> 行為：</label><input type="text" name="act" id="c">
+			<label for="res" id="results"> 結果：</label><input type="text" name="resultss" id="d">
 			<br>
 			<p>
-			<label for="act" id="law"> 罪名(ex刑法271條1項殺人罪)：</label><input type="text" name="law" id="d">
+			<label for="act" id="law"> 罪名(ex刑法271條1項殺人罪)：</label><input type="text" name="law" id="e">
 			</p>
-			既未遂：<input type="radio" name="completion" id="c1" value="done"><label for="done" id="label-done">既遂</label>
-			<input type="radio" name="completion" id="c2" value="yet"><label for="yet" id="label-yet">未遂</label>
-			<p>
-			故意過失：<input type="radio" name="subject" id="s1" value="done"><label for="mean" id="label-mean">故意</label>
-			<input type="radio" name="subject" id="s2" value="yet"><label for="negligence" id="label-negligence">過失</label>
 			
+			既未遂：
+			<input type="radio" name="completion" id="c1" value="done"><label for="done" id="label-done">既遂</label>
+			<s><input type="radio" name="completion" id="c2" value="yet"><label for="yet" id="label-yet">未遂</label></s>
+			>>>暫不支援未遂題型
+			
+			<p>
+			故意過失：
+			<input type="radio" name="subject" id="s1" value="done"><label for="mean" id="label-mean">故意</label>
+			<s><input type="radio" name="subject" id="s2" value="yet"><label for="negligence" id="label-negligence">過失</label></s>
+			>>>暫不支援過失題型
 			</P>
+			
+			解題架構(需要論述的部分)：
+			<input type="checkbox" name="fra" id="f1" value="TB">構成要件
+			<input type="checkbox" name="fra" id="f2" value="S">違法性
+			<input type="checkbox" name="fra" id="f3" value="R">有責性
+			<br>
+			<small>建議僅勾選「構成要件」，因為其他部分的論述擬答產生器暫不支援。</small>
+			<br>
+			<br>
+			
 			<button type="button" id="subButton" value="answer">請回答</button>
 			</form>
 			<p>參考答案</p>
@@ -52,28 +68,29 @@
 				var actor = document.getElementById('a').value;
 				var victim = document.getElementById('b').value;
 				var act = document.getElementById('c').value;
-				var law = document.getElementById('d').value;
+				var results = document.getElementById('d').value;
+				var law = document.getElementById('e').value;
 				var result = document.getElementById('result');
 			
 				result.innerHTML = actor + act +'的行為，構成' + law + '。';
 				result.innerHTML+='<br>';
-				result.innerHTML+='(一)構成要件階層：';
+				result.innerHTML+='(一)構成要件：';
 				result.innerHTML+='<br>';	 
-				result.innerHTML+='題示'+actor + act +'的行為，已進入犯罪構成要件著手階段，且已經發生該當構成要件之結果。'+actor+'對於該結果有認識及意欲，其行為該當'+law+'構成要件';
-				
+				result.innerHTML+=actor + act +'的行為，進入犯罪構成要件著手階段，而該行為乃造成'+results+'結果所不可想像其不存在的條件。'+actor+'對於行為及結果有認識與意欲，其行為該當'+law+'構成要件。';
+				result.innerHTML+='<br>';
+				result.innerHTML+='(二)違法性：';
+				result.innerHTML+='<br>';
+				result.innerHTML+='無阻卻違法事由。';
+				result.innerHTML+='<br>';
+				result.innerHTML+='(三)有責性：';
+				result.innerHTML+='<br>';
+				result.innerHTML+='無阻卻罪責事由。';
 				//alert(nameField);
 			}
 			
 
-
-
 			var subButton = document.getElementById('subButton');
 			subButton.addEventListener('click', getUserName, false); 
-			//這行到底是要幹嘛啦！
-			//document.getElementById('result').textContent = actor + act +'的行為，構成' + law + '。';
-			//document.getElementById('result').textContent+='777';
-			//document.write( a+ c+'的行為，構成'+ d)   //試試看註解
-			
 			
 			
 			</script>
