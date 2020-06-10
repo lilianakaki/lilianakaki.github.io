@@ -4,7 +4,7 @@
 	<head><title>初代擬答產生器</title></head>
 	<body>
 		<header>
-			<h1>刑分擬答產生器
+			<h1>刑法擬答產生器
 			</h1>
 			<pre>
 機器人只具有輔助功能  不要真的以為考試這樣答就可以了喔
@@ -72,6 +72,9 @@
 			<div>
 			<p id='text'></p></div>
 			</div>
+			
+					
+			
 			<br>
 			<br>
 			
@@ -88,8 +91,8 @@ function generate() {
 	var rule = document.getElementById('f').value;
 	var mind = document.getElementById('g').value;
 	var mresults = document.getElementById('h').value;
-	var head = actor + act +'的行為導致'+results+'，構成' + law + '。';
-	
+	var head_c1 = actor + act +'的行為導致'+results+'，構成' + law + '。';
+	var head_c2 = actor + act +'的行為構成' + law + '。';
 	/*故意既遂*/var TB_s1c1='(一)構成要件：'+actor + act +'的行為，進入犯罪構成要件著手階段，而該行為乃造成'+results+'結果所不可想像其不存在的條件。'+actor+'對於行為及結果有認識與意欲，其行為該當'+law+'構成要件。';
 	/*故意未遂*/var TB_s1c2='(一)構成要件：'+actor +'基於'+mind+'之行為決意而'+ act +'，此行為與構成要件行為間已無其他中間步驟，且使法益陷於直接危險，已經進入著手階段，但由於未發生'+mresults+'之結果，其行為應評價為未遂。';
 	/*過失既遂*/var TB_s2c1='(一)構成要件：'+actor+ act +'的行為已違反遵守'+rule+'之一般注意義務，而此行為與'+results+'之結果間存在因果關係，又違反規則者應對此結果之發生有預見之可能，'+actor+'之行為應評價為過失。';
@@ -102,11 +105,13 @@ function generate() {
 
 	if (document.getElementById('s1').checked) {
 		if (document.getElementById('c1').checked) {
+		head = head_c1;
 		TB = TB_s1c1;
 		R = R ;
 		S = S_s1c1 ;
 		}
 		if (document.getElementById('c2').checked) {
+		head = head_c2;
 		TB = TB_s1c2;
 		R = R ;
 		S = S_s1c2 ;
@@ -115,11 +120,13 @@ function generate() {
 	}
 	if (document.getElementById('s2').checked) {
 	  if (document.getElementById('c1').checked) {
+		head = head_c1;
 		TB = TB_s2c1;
 		R = R ;
 		S = S_s2c1 ;
 		}
 		if (document.getElementById('c2').checked) {
+		head = ' ';
 		TB = '沒有這種情況';
 		R = ' ';
 		S = ' ';
@@ -151,7 +158,24 @@ function generate() {
 			</script>
 		</article>
 		<aside></aside>
-		<footer></footer>
+		<footer>
+		<pre>
+警語：
+刑法題目博大精深，遠遠不是曲曲的擬答產生器可以回應的對象。
+本產生器只適合用於處理答案已經很明確，考卷上可以一筆帶過的答案。
+對於灰色地帶存在爭議的部分，像是「是否存在強制手段」、「到底著手了嗎」，
+這些問題需要引經據典並且仔細地涵攝題目給的要件事實，本產生器是做不到的~
+除此之外，需要特別提醒的是，產生器無法處理：
+1. 共犯、加重結果犯、不作為犯、結合犯題型。
+2. 違法性爭點。
+3. 未遂犯有責性部分的論述。
+4. 個別犯罪類型特殊構成要件。
+所以題目如果考這些內容的話要特別小心喔~
+		</pre>
+		
+		
+		
+		</footer>
 	
 	</body>
 </html>
