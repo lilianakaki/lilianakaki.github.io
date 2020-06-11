@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
-<html onload="document.write('123');">
+<html>
 	<head><title>初代擬答產生器</title></head>
 	<body>
 		<header>
@@ -21,15 +21,17 @@
 			<section></section>
 			<form id='hard'>
 			<br>
-			<label for="factor" id="actor"> 行為人：</label><input type="text" name="actor" id="a">
-			<label for="fvictim" id="victim"> 被害人：</lable><input type="text" name="victim" id="b">
-			<label for="fact" id="act"> 行為：</label><input type="text" name="act" id="c">
-			<label for="res" id="results"> 結果：</label><input type="text" name="resultss" id="d">
-			<br>
-			<p>
-			<label for="act" id="law"> 罪名(ex刑法271條1項殺人罪)：</label><input type="text" name="law" id="e">
 			
-			</p>
+			<div>					
+			<label for="factor" id="actor"> 行為人：</label><input type="text" placeholder="請輸入名詞" name="actor" id="a">
+			<label for="fvictim" id="victim"> 被害人：</lable><input type="text" placeholder="請輸入名詞" name="victim" id="b">
+			<br><br>
+			<label for="fact" id="act"> 行為：</label><input type="text" placeholder="請輸入動詞+受詞" name="act" id="c">
+			<label for="res" id="results"> 結果：</label><input type="text" placeholder="請輸入主語+賓語" name="resultss" id="d">
+			<br>
+			<br>
+			<label for="act" id="law"> 罪名：</label><input type="text" placeholder="ex:刑法271條1項殺人罪" name="law" id="e">
+			</div>
 						
 			<div id=Mens>
 			<p>
@@ -38,47 +40,36 @@
 			<input type="radio" name="subject" id="s2" value="subject"><label for="negligence" id="label-negligence">過失</label>
 			<br>
 			過失犯須填>
-			<label for="res" id="rule"> 客觀注意義務(ex:交通規則)：</label><input type="text" name="resultss" id="f">
+			<label for="res" id="rule"> 客觀注意義務：</label><input type="text" placeholder="ex:交通規則" name="resultss" id="f">
 			</P>
 			</div>
 						
 			<div id=Actus>
 			既未遂：
-			<br>
 			<input type="radio" name="completion" id="c1" value="done"><label for="done" id="label-done">既遂</label>
 			<input type="radio" name="completion" id="c2" value="yet"><label for="yet" id="label-yet">未遂</label>
 			<br>
 			未遂犯須填>			
-			<label for="res" id="mind"> 行為決意：</label><input type="text" name="resultss" id="g">
-			<label for="res" id="mresults"> 預期結果：</label><input type="text" name="resultss" id="h">
+			<label for="res" id="mind"> 行為決意：</label><input type="text" placeholder="ex:殺死乙" name="results" id="g">
+			<label for="res" id="mresults"> 預期結果：</label><input type="text" placeholder="請輸入動詞+受詞" name="results" id="h">
 			</div>
 			
 			<br>
 			<div id=structure>
 			解題架構(需要論述的部分)：
 			<input type="checkbox" name="fra" id="f1" value="TB">構成要件
-			<input type="checkbox" name="fra" id="f2" value="S">違法性
-			<input type="checkbox" name="fra" id="f3" value="R">有責性
-			<br>
-			
+			<input type="checkbox" name="fra" id="f2" value="R">違法性
+			<input type="checkbox" name="fra" id="f3" value="S">有責性
 			</div>
-			
-			<br>
-			<br>
+			<br><br><br>
 			
 			<button type="button" id="subButton" value="answer">請回答</button>
 			</form>
 			<p>參考答案</p>
 			<div>
 			<p id='text'></p></div>
-			</div>
-			
+			<br><br>
 					
-			
-			<br>
-			<br>
-			
-			
 			<script>
 
 function generate() {			
@@ -145,12 +136,9 @@ function generate() {
 	text.innerHTML+='<br>';
 	if (document.getElementById('f3').checked) {
 	text.innerHTML+= S;
-	}
-			
+	}		
 }			
-
-			
-
+		
 			var subButton = document.getElementById('subButton');
 			subButton.addEventListener('click', generate, true); 
 			
@@ -172,9 +160,6 @@ function generate() {
 4. 個別犯罪類型特殊構成要件。
 所以題目如果考這些內容的話要特別小心喔~
 		</pre>
-		
-		
-		
 		</footer>
 	
 	</body>
