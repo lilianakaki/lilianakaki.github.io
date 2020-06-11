@@ -26,8 +26,8 @@
 			<label for="factor" id="actor"> 行為人：</label><input type="text" placeholder="請輸入名詞" name="actor" id="a">
 			<label for="fvictim" id="victim"> 被害人：</lable><input type="text" placeholder="請輸入名詞" name="victim" id="b">
 			<br><br>
-			<label for="fact" id="act"> 行為：</label><input type="text" placeholder="請輸入動詞+受詞" name="act" id="c">
-			<label for="res" id="results"> 結果：</label><input type="text" placeholder="請輸入主語+賓語" name="resultss" id="d">
+			<label for="fact" id="act"> 行為：</label><input type="text" placeholder="請輸入動詞+被害人" name="act" id="c">
+			<label for="res" id="results"> 結果：</label><input type="text" placeholder="請輸入被害人+狀態" name="resultss" id="d">
 			<br>
 			<br>
 			<label for="act" id="law"> 罪名：</label><input type="text" placeholder="ex:刑法271條1項殺人罪" name="law" id="e">
@@ -110,7 +110,7 @@ function generate() {
 		
 	}
 	if (document.getElementById('s2').checked) {
-	  if (document.getElementById('c1').checked) {
+	        if (document.getElementById('c1').checked) {
 		head = head_c1;
 		TB = TB_s2c1;
 		R = R ;
