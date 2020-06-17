@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
-	<head><title>初代擬答產生器</title></head>
-	<body>
+	<head><title>初代擬答產生器</title>
+	<style>
+	p#text {
+    		
+            background-color: white;
+			background-position: 10px 50px;
+    	}
+	</style>
+	</head>
+	<body style="background-image: url(robo2.png);background-repeat: no-repeat;background-position: right bottom;background-attachment: fixed;">
+ 
 		<header>
 			<h1>刑法擬答產生器
 			</h1>
@@ -23,14 +32,14 @@
 			<br>
 			
 			<div>					
-			<label for="factor" id="actor"> 行為人：</label><input type="text" placeholder="請輸入名詞" name="actor" id="a">
-			<label for="fvictim" id="victim"> 被害人：</lable><input type="text" placeholder="請輸入名詞" name="victim" id="b">
+			<label for="factor" id="actor"> 行為人：</label><input type="text" required placeholder="請輸入名詞" name="actor" id="a">
+			<label for="fvictim" id="victim"> 被害人：</lable><input type="text" required placeholder="請輸入名詞" name="victim" id="b">
 			<br><br>
-			<label for="fact" id="act"> 行為：</label><input type="text" placeholder="請輸入動詞+被害人" name="act" id="c">
+			<label for="fact" id="act"> 行為：</label><input type="text" required placeholder="請輸入動詞+被害人" name="act" id="c">
 			<label for="res" id="results"> 結果：</label><input type="text" placeholder="請輸入被害人+狀態" name="resultss" id="d">
 			<br>
 			<br>
-			<label for="act" id="law"> 罪名：</label><input type="text" placeholder="ex:刑法271條1項殺人罪" name="law" id="e">
+			<label for="act" id="law"> 罪名：</label><input type="text" required placeholder="ex:刑法271條1項殺人罪" name="law" id="e">
 			</div>
 						
 			<div id=Mens>
@@ -66,8 +75,8 @@
 			<button type="button" id="subButton" value="answer">請回答</button>
 			</form>
 			<p>參考答案</p>
-			<div>
-			<p id='text'></p></div>
+			<div style="width:50%; height:80%; overflow:auto; border:ridge 1px #888888; ">
+			<p id='text' ></p></div>
 			<br><br>
 					
 			<script>
@@ -167,6 +176,7 @@ function generate() {
 2. 違法性爭點。
 3. 未遂犯有責性部分的論述。
 4. 個別犯罪類型特殊構成要件。
+5. 無法做無罪認定。
 所以題目如果考這些內容的話要特別小心喔~
 		</pre>
 			https://guides.github.com/features/pages/
